@@ -7,7 +7,9 @@ namespace PacMan
         static void Main(string[] args)
         {
             Map map = new Map();
+            Movement movement = new Movement();
             map.PrintMap1();
+            movement.MovePacMan();
         }
     }
 }
