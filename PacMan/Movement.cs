@@ -4,47 +4,36 @@ namespace PacMan
 {
     class Movement
     {
-        public void MovePacMan()
+        public void MovePacMan(string[,] map)
         {
-            int x = 60;
-            int y = 12;
+            Detection detection = new Detection();
+            Player player = new Player();
             ConsoleKey key = ConsoleKey.LeftArrow;
 
             while (true)
             {
+                Console.SetCursorPosition(player.PositionX, player.PositionY);
+                Console.WriteLine(" ");
+
                 if (key == ConsoleKey.UpArrow)
                 {
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine(" ");
-                    y--;
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine("C");
-
+                    ModifyPosition(map, 0, -1, player);
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine(" ");
-                    x++;
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine("C");
+                    ModifyPosition(map, 1, 0, player);
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine(" ");
-                    y++;
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine("C");
+                    ModifyPosition(map, 0, 1, player);
                 }
                 else if (key == ConsoleKey.LeftArrow)
                 {
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine(" ");
-                    x--;
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine("C");
+                    ModifyPosition(map, -1, 0, player);
                 }
+
+                Console.SetCursorPosition(player.PositionX, player.PositionY);
+                Console.WriteLine("C");
 
                 DateTime beginWait = DateTime.Now;
                 double speed = 0.3;
@@ -54,6 +43,17 @@ namespace PacMan
                 {
                     key = Console.ReadKey().Key;
                 }
+            }
+        }
+        private void ModifyPosition(string[,] map, int x, int y, Player player)
+        {
+            x = player.PositionX + x;
+            y = player.PositionY + y;
+
+            if (map[y, x - 43] != "#")
+            {
+                player.PositionX = x;
+                player.PositionY = y;
             }
         }
     }
