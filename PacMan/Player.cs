@@ -6,7 +6,13 @@ namespace PacMan
 {
     class Player
     {
-        public int PositionX { get; set; } = 45;
-        public int PositionY { get; set; } = 12;
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+
+        public Player()
+        {
+            PositionX = 45;
+            PositionY = 12;
+        }
     }
 }

@@ -14,11 +14,14 @@ namespace PacMan
     }
     class Detection
     {
-        public void DetectionCheckForWallHit(string[,] map, Player player)
+        public void TryDetectWallHit(string mapSymbol, Player player, Coordinate coordinate)
         {
-         
+            if (mapSymbol != "#")
+            {
+                player.PositionX = coordinate.X;
+                player.PositionY = coordinate.Y;
+            }
         }
-        public void DetectionCheckForMonsterHit() { }
+        public void TryDetectMonsterHit() { }
     }
 }
-//modifyposition - hitta en lösning där max 3 parameter finns

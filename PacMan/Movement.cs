@@ -8,30 +8,39 @@ namespace PacMan
         {
             Detection detection = new Detection();
             Player player = new Player();
+            Coordinate coordinate = new Coordinate();
             ConsoleKey key = ConsoleKey.LeftArrow;
 
             while (true)
             {
+                coordinate.X = 0;
+                coordinate.Y = 0;
                 Console.SetCursorPosition(player.PositionX, player.PositionY);
                 Console.WriteLine(" ");
 
                 if (key == ConsoleKey.UpArrow)
                 {
-                    ModifyPosition(map, 0, -1, player);
+                    coordinate.Y = -1;
+                    ModifyPosition(coordinate, player);
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
-                    ModifyPosition(map, 1, 0, player);
+                    coordinate.X = 1;
+                    ModifyPosition(coordinate, player);
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-                    ModifyPosition(map, 0, 1, player);
+                    coordinate.Y = 1;
+                    ModifyPosition(coordinate, player);
                 }
                 else if (key == ConsoleKey.LeftArrow)
                 {
-                    ModifyPosition(map, -1, 0, player);
+                    coordinate.X = -1;
+                    ModifyPosition(coordinate, player);
                 }
 
+                string mapSymbol = map[coordinate.Y, coordinate.X - 43];
+                detection.TryDetectWallHit(mapSymbol, player, coordinate);
                 Console.SetCursorPosition(player.PositionX, player.PositionY);
                 Console.WriteLine("C");
 
@@ -45,16 +54,10 @@ namespace PacMan
                 }
             }
         }
-        private void ModifyPosition(string[,] map, int x, int y, Player player)
+        private void ModifyPosition(Coordinate coordinate, Player player)
         {
-            x = player.PositionX + x;
-            y = player.PositionY + y;
-
-            if (map[y, x - 43] != "#")
-            {
-                player.PositionX = x;
-                player.PositionY = y;
-            }
+            coordinate.X = player.PositionX + coordinate.X;
+            coordinate.Y = player.PositionY + coordinate.Y;
         }
     }
 }
