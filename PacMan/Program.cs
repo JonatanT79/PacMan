@@ -1,5 +1,5 @@
 ﻿using System;
-using static PacMan.Symbols;
+
 namespace PacMan
 {
     class Program
@@ -12,16 +12,5 @@ namespace PacMan
             movement.MovePacMan(map.Map1);
         }
     }
-    class Detection
-    {
-        public void TryDetectWallHit(string mapSymbol, Player player, Coordinate coordinate)
-        {
-            if (mapSymbol != "#")
-            {
-                player.PositionX = coordinate.X;
-                player.PositionY = coordinate.Y;
-            }
-        }
-        public void TryDetectMonsterHit() { }
-    }
 }
+//Fix monster

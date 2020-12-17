@@ -9,7 +9,9 @@ namespace PacMan
             Detection detection = new Detection();
             Player player = new Player();
             Coordinate coordinate = new Coordinate();
+            Display display = new Display();
             ConsoleKey key = ConsoleKey.LeftArrow;
+            int score = 0;
 
             while (true)
             {
@@ -41,6 +43,14 @@ namespace PacMan
 
                 string mapSymbol = map[coordinate.Y, coordinate.X - 43];
                 detection.TryDetectWallHit(mapSymbol, player, coordinate);
+
+                if (detection.TryDetectFeedHit(mapSymbol, ref score))
+                {
+                    map[coordinate.Y, coordinate.X - 43] = "";
+                }
+
+                display.DisplayScore(score);
+
                 Console.SetCursorPosition(player.PositionX, player.PositionY);
                 Console.WriteLine("C");
 

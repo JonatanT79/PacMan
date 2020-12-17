@@ -46,7 +46,7 @@ namespace PacMan
             {
                 Console.ForegroundColor = ConsoleColor.Red;
             }
-            else if (symbol == DOT)
+            else if (symbol == Feed)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
             }

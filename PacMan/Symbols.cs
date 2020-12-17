@@ -2,6 +2,7 @@
 {
     class Symbols
     {
-        public const string DOT = ".", WALL = "#";
+        public const string Feed = ".";
+        public const string WALL = "#";
     }
 }
