@@ -11,8 +11,8 @@ namespace PacMan
 
         public Player()
         {
-            PositionX = 45;
-            PositionY = 12;
+            PositionX = 59;
+            PositionY = 6;
         }
     }
 }

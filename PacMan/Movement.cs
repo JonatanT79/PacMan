@@ -10,7 +10,7 @@ namespace PacMan
             Player player = new Player();
             Coordinate coordinate = new Coordinate();
             Display display = new Display();
-            ConsoleKey key = ConsoleKey.LeftArrow;
+            ConsoleKey key = ConsoleKey.UpArrow;
             int score = 0;
 
             while (true)
@@ -46,7 +46,7 @@ namespace PacMan
 
                 if (detection.TryDetectFeedHit(mapSymbol, ref score))
                 {
-                    map[coordinate.Y, coordinate.X - 43] = "";
+                    map[player.PositionY, player.PositionX - 43] = " ";
                 }
 
                 display.DisplayScore(score);
