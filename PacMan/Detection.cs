@@ -9,7 +9,7 @@ namespace PacMan
         {
             if (mapSymbol == Feed)
             {
-                score++;
+                score += 10;
                 return true;
             }
             return false;
@@ -22,9 +22,12 @@ namespace PacMan
                 player.PositionY = coordinate.Y;
             }
         }
-        public void TryDetectMonsterHit()
+        public void TryDetectMonsterHit(string mapSymbol, Player player)
         {
-
+            if(mapSymbol == MONSTER)
+            {
+                player.Life--;
+            }
         }
     }
 }

@@ -43,13 +43,14 @@ namespace PacMan
 
                 string mapSymbol = map[coordinate.Y, coordinate.X - 43];
                 detection.TryDetectWallHit(mapSymbol, player, coordinate);
+                detection.TryDetectMonsterHit(mapSymbol, player);
 
                 if (detection.TryDetectFeedHit(mapSymbol, ref score))
                 {
                     map[player.PositionY, player.PositionX - 43] = " ";
                 }
 
-                display.DisplayScore(score);
+                display.DisplayStats(score, player);
 
                 Console.SetCursorPosition(player.PositionX, player.PositionY);
                 Console.WriteLine("C");

@@ -8,11 +8,13 @@ namespace PacMan
     {
         public int PositionX { get; set; }
         public int PositionY { get; set; }
+        public int Life { get; set; }
 
         public Player()
         {
             PositionX = 59;
             PositionY = 6;
+            Life = 3;
         }
     }
 }

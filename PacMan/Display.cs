@@ -6,9 +6,11 @@ namespace PacMan
 {
     class Display
     {
-        public void DisplayScore(int score)
+        public void DisplayStats(int score, Player player)
         {
-            Console.SetCursorPosition(55, 15);
+            Console.SetCursorPosition(43, 15);
+            Console.WriteLine($"Lives: {player.Life}");
+            Console.SetCursorPosition(68, 15);
             Console.WriteLine($"Score: {score}");
         }
     }
