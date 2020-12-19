@@ -7,7 +7,7 @@ namespace PacMan
         public void MovePacMan(string[,] map)
         {
             Detection detection = new Detection();
-            Player player = new Player();
+            Player player = new Player(3);
             Coordinate coordinate = new Coordinate();
             Display display = new Display();
             ConsoleKey key = ConsoleKey.UpArrow;
@@ -43,7 +43,7 @@ namespace PacMan
 
                 string mapSymbol = map[coordinate.Y, coordinate.X - 43];
                 detection.TryDetectWallHit(mapSymbol, player, coordinate);
-                detection.TryDetectMonsterHit(mapSymbol, player);
+                detection.TryDetectMonsterHit(mapSymbol, ref player);
 
                 if (detection.TryDetectFeedHit(mapSymbol, ref score))
                 {

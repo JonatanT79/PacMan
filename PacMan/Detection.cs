@@ -22,11 +22,19 @@ namespace PacMan
                 player.PositionY = coordinate.Y;
             }
         }
-        public void TryDetectMonsterHit(string mapSymbol, Player player)
+        public void TryDetectMonsterHit(string mapSymbol, ref Player player)
         {
-            if(mapSymbol == MONSTER)
+            GameOver gameOver = new GameOver();
+
+            if (mapSymbol == MONSTER)
             {
                 player.Life--;
+                player = new Player(player.Life);
+
+                if (player.Life <= 0)
+                {
+                    gameOver.GameOverForUser();
+                }
             }
         }
     }

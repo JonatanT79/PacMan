@@ -10,11 +10,11 @@ namespace PacMan
         public int PositionY { get; set; }
         public int Life { get; set; }
 
-        public Player()
+        public Player(int life)
         {
             PositionX = 59;
             PositionY = 6;
-            Life = 3;
+            Life = life;
         }
     }
 }
