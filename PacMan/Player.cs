@@ -13,7 +13,7 @@ namespace PacMan
         public Player(int life)
         {
             PositionX = 59;
-            PositionY = 6;
+            PositionY = 10;
             Life = life;
         }
     }

@@ -25,6 +25,7 @@ namespace PacMan
         public void TryDetectMonsterHit(string mapSymbol, ref Player player)
         {
             GameOver gameOver = new GameOver();
+            Display display = new Display();
 
             if (mapSymbol == MONSTER)
             {
@@ -35,6 +36,8 @@ namespace PacMan
                 {
                     gameOver.GameOverForUser();
                 }
+
+                display.DisplayReady(player);
             }
         }
     }

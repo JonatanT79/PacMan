@@ -10,7 +10,7 @@ namespace PacMan
             Player player = new Player(3);
             Coordinate coordinate = new Coordinate();
             Display display = new Display();
-            ConsoleKey key = ConsoleKey.UpArrow;
+            ConsoleKey key = ConsoleKey.LeftArrow;
             int score = 0;
 
             while (true)
@@ -50,13 +50,11 @@ namespace PacMan
                     map[player.PositionY, player.PositionX - 43] = " ";
                 }
 
+                display.DisplayPlayer(player);
                 display.DisplayStats(score, player);
-
-                Console.SetCursorPosition(player.PositionX, player.PositionY);
-                Console.WriteLine("C");
-
                 DateTime beginWait = DateTime.Now;
                 double speed = 0.3;
+
                 while (!Console.KeyAvailable && DateTime.Now.Subtract(beginWait).TotalSeconds < speed) { }
 
                 if (Console.KeyAvailable)

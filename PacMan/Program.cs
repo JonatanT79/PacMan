@@ -8,9 +8,14 @@ namespace PacMan
         {
             Map map = new Map();
             Movement movement = new Movement();
+            Display display = new Display();
+            Player player = new Player(3);
+
             map.PrintMap1();
+            display.DisplayStats(0, player);
+            display.DisplayReady(player);
             movement.MovePacMan(map.Map1);
         }
     }
 }
-//Fix monster
+//Fix movement for monster
