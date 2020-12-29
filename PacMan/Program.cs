@@ -14,7 +14,7 @@ namespace PacMan
             map.PrintMap1();
             display.DisplayStats(0, player);
             display.DisplayReady(player);
-            movement.MovePacMan(map.Map1);
+            movement.MovePlayer(map.Map1);
         }
     }
 }
