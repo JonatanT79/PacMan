@@ -72,7 +72,13 @@ namespace PacMan
         }
         private void MoveMonster(string[,] map, ref List<Monster> monsterList)
         {
+            //Move monster1
+            Console.ForegroundColor = ConsoleColor.Red;
             MoveSpecificMonster(map, monsterList[0]);
+            //Move monster2
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            MoveSpecificMonster(map, monsterList[1]);
+            Console.ResetColor();
         }
         private void MoveSpecificMonster(string[,] map, Monster monster)
         {
@@ -116,10 +122,9 @@ namespace PacMan
 
             } while (mapSymbol == "#");
 
+            //Add new monster position
             monster.PositionX = coordinate.X;
             monster.PositionY = coordinate.Y;
-
-            //Add new monster position
             map[monster.PositionY, monster.PositionX - 43] = "M";
             display.DisplayMonster(monster);
         }

@@ -13,7 +13,8 @@ namespace PacMan
         {
             List<Monster> monsters = new List<Monster>()
             {
-                new Monster() {PositionX = 57, PositionY = 4}
+                new Monster() { PositionX = 57, PositionY = 4 },
+                new Monster() { PositionX = 61, PositionY = 4 }
             };
 
             return monsters;
