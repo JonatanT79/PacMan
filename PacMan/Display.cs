@@ -14,11 +14,6 @@ namespace PacMan
             Console.SetCursorPosition(68, 15);
             Console.WriteLine($"Score: {score}");
         }
-        public void DisplayPlayer(Player player)
-        {
-            Console.SetCursorPosition(player.PositionX, player.PositionY);
-            Console.WriteLine("C");
-        }
         public void DisplayReady(Player player)
         {
             DisplayPlayer(player);
@@ -29,6 +24,16 @@ namespace PacMan
             Console.SetCursorPosition(56, 6);
             Console.WriteLine("       ");
             Console.ResetColor();
+        }
+        public void DisplayPlayer(Player player)
+        {
+            Console.SetCursorPosition(player.PositionX, player.PositionY);
+            Console.WriteLine("C");
+        }
+        public void DisplayMonster(Monster monster)
+        {
+            Console.SetCursorPosition(monster.PositionX, monster.PositionY);
+            Console.WriteLine("M");
         }
     }
 }

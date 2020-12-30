@@ -72,14 +72,18 @@ namespace PacMan
         }
         private void MoveMonster(string[,] map, ref List<Monster> monsterList)
         {
-            //Move monster1
-            //Remove old monster position
-            Console.SetCursorPosition(monsterList[0].PositionX, monsterList[0].PositionY);
-            Console.WriteLine(" ");
-            map[monsterList[0].PositionY, monsterList[0].PositionX - 43] = " ";
-
+            MoveSpecificMonster(map, monsterList[0]);
+        }
+        private void MoveSpecificMonster(string[,] map, Monster monster)
+        {
+            Display display = new Display();
             Random rnd = new Random();
             Coordinate coordinate;
+
+            //Remove old monster position
+            Console.SetCursorPosition(monster.PositionX, monster.PositionY);
+            Console.WriteLine(" ");
+            map[monster.PositionY, monster.PositionX - 43] = " ";
             string mapSymbol;
 
             do
@@ -90,35 +94,34 @@ namespace PacMan
                 if (directionIndex == 1)
                 {
                     coordinate.Y = -1;
-                    ModifyMonsterPosition(coordinate, monsterList[0]);
+                    ModifyMonsterPosition(coordinate, monster);
                 }
                 else if (directionIndex == 2)
                 {
                     coordinate.X = 1;
-                    ModifyMonsterPosition(coordinate, monsterList[0]);
+                    ModifyMonsterPosition(coordinate, monster);
                 }
                 else if (directionIndex == 3)
                 {
                     coordinate.Y = 1;
-                    ModifyMonsterPosition(coordinate, monsterList[0]);
+                    ModifyMonsterPosition(coordinate, monster);
                 }
                 else if (directionIndex == 4)
                 {
                     coordinate.X = -1;
-                    ModifyMonsterPosition(coordinate, monsterList[0]);
+                    ModifyMonsterPosition(coordinate, monster);
                 }
 
                 mapSymbol = map[coordinate.Y, coordinate.X - 43];
 
             } while (mapSymbol == "#");
 
-            monsterList[0].PositionX = coordinate.X;
-            monsterList[0].PositionY = coordinate.Y;
+            monster.PositionX = coordinate.X;
+            monster.PositionY = coordinate.Y;
+
             //Add new monster position
-            Console.SetCursorPosition(monsterList[0].PositionX, monsterList[0].PositionY);
-            Console.WriteLine("M");
-            map[monsterList[0].PositionY, monsterList[0].PositionX - 43] = "M";
-            //
+            map[monster.PositionY, monster.PositionX - 43] = "M";
+            display.DisplayMonster(monster);
         }
         private void ModifyPlayerPosition(Coordinate coordinate, Player player)
         {
