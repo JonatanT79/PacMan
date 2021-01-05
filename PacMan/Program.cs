@@ -19,3 +19,7 @@ namespace PacMan
     }
 }
 //Fix so monster is moving closer to player
+//Monster pos: x = 57, y = 4;
+//Player pos: x = 59, y = 10;
+
+//börja göra så att ex. X:et matcher, därefter: if: m.x == p.x då börja med y.

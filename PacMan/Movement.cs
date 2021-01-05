@@ -90,6 +90,13 @@ namespace PacMan
             Console.SetCursorPosition(monster.PositionX, monster.PositionY);
             Console.WriteLine(" ");
             map[monster.PositionY, monster.PositionX - 43] = " ";
+
+            if(true)
+            {
+                display.DisplayFeed(monster);
+                map[monster.PositionY, monster.PositionX - 43] = ".";
+            }
+
             string mapSymbol;
 
             do
