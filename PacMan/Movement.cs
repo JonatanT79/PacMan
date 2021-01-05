@@ -49,7 +49,7 @@ namespace PacMan
                 detection.TryDetectWallHit(mapSymbol, player, coordinate);
 
                 //monster movement
-                MoveMonster(map, ref MonsterList);
+                MoveMonster(map, MonsterList);
                 detection.TryDetectMonsterHit(mapSymbol, ref player);
 
                 if (detection.TryDetectFeedHit(mapSymbol, ref score))
@@ -70,7 +70,7 @@ namespace PacMan
                 }
             }
         }
-        private void MoveMonster(string[,] map, ref List<Monster> monsterList)
+        private void MoveMonster(string[,] map, List<Monster> monsterList)
         {
             //Move monster1
             Console.ForegroundColor = ConsoleColor.Red;
@@ -88,13 +88,17 @@ namespace PacMan
 
             //Remove old monster position
             Console.SetCursorPosition(monster.PositionX, monster.PositionY);
-            Console.WriteLine(" ");
-            map[monster.PositionY, monster.PositionX - 43] = " ";
 
-            if(true)
+            if (monster.StandingOnFeed == true)
             {
-                display.DisplayFeed(monster);
                 map[monster.PositionY, monster.PositionX - 43] = ".";
+                display.DisplayFeed();
+                monster.StandingOnFeed = false;
+            }
+            else
+            {
+                map[monster.PositionY, monster.PositionX - 43] = " ";
+                Console.WriteLine(" ");
             }
 
             string mapSymbol;
@@ -132,6 +136,13 @@ namespace PacMan
             //Add new monster position
             monster.PositionX = coordinate.X;
             monster.PositionY = coordinate.Y;
+            string symbol = map[monster.PositionY, monster.PositionX - 43];
+
+            if (symbol == ".")
+            {
+                monster.StandingOnFeed = true;
+            }
+
             map[monster.PositionY, monster.PositionX - 43] = "M";
             display.DisplayMonster(monster);
         }

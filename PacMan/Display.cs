@@ -35,9 +35,8 @@ namespace PacMan
             Console.SetCursorPosition(monster.PositionX, monster.PositionY);
             Console.WriteLine("M");
         }
-        public void DisplayFeed(Monster monster)
+        public void DisplayFeed()
         {
-            Console.SetCursorPosition(monster.PositionX, monster.PositionY);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(".");
             Console.ResetColor();

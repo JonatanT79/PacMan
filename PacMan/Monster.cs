@@ -8,6 +8,7 @@ namespace PacMan
     {
         public int PositionX { get; set; }
         public int PositionY { get; set; }
+        public bool StandingOnFeed { get; set; }
 
         public List<Monster> MonsterList()
         {
